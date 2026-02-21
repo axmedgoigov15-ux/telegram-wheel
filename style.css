@@ -10,3 +10,7 @@ body {
 canvas {
   margin-bottom: 20px;
 }
+#text {
+  margin-top: 20px;
+  font-size: 22px;
+}
