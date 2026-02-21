@@ -1,18 +1,12 @@
 body {
   background: #0f0f0f;
-  color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: Arial;
 }
 
-.wheel-container {
-  text-align: center;
-}
-
-#wheel {
-  font-size: 100px;
-  transition: transform 2s ease-out;
+canvas {
+  margin-bottom: 20px;
 }
