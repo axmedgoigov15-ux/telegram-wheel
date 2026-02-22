@@ -1,31 +1,45 @@
 from aiogram import Bot, Dispatcher, types
 from aiogram.utils import executor
-import os
 
-TOKEN = os.getenv 8321012082:AAGjcOJK9Z4AGda-mf_mKjCIpjP5c5f86jw
-ADMIN_ID = 123456789  8142916139
+# === ТВОИ ДАННЫЕ ===
+BOT_TOKEN = "8321012082:AAGjcOJK9Z4AGda-mf_mKjCIpjP5c5f86jw"
+ADMIN_ID = 8142916139  # твой Telegram ID
 
-bot = Bot(token=TOKEN)
+bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot)
 
 @dp.message_handler(commands=["start"])
-async def start(msg: types.Message):
-    keyboard = types.InlineKeyboardMarkup()
-    keyboard.add(
-        types.InlineKeyboardButton(
-            "🎡 Крутить колесо",
-            web_app=types.WebAppInfo(url="https://ТВОЙ_НИК.github.io/telegram-wheel/")
+async def start(message: types.Message):
+    await message.answer(
+        "🎡 Добро пожаловать!\n\n"
+        "Нажми кнопку ниже, чтобы крутить колесо 👇",
+        reply_markup=types.InlineKeyboardMarkup().add(
+            types.InlineKeyboardButton(
+                text="🎰 Крутить колесо",
+                web_app=types.WebAppInfo(
+                    url="https://axmedgoigov15-ux.github.io/telegram-wheel/"
+                )
+            )
         )
     )
-    await msg.answer("Жми кнопку 👇", reply_markup=keyboard)
 
-@dp.message_handler(commands=["win"])
-async def win(msg: types.Message):
-    if msg.from_user.id == ADMIN_ID:
-        await msg.answer("🎉 Вы выдали выигрыш пользователю")
-    else:
-        await msg.answer("⛔ Только администратор")
+@dp.message_handler(content_types=types.ContentType.WEB_APP_DATA)
+async def web_app_data(message: types.Message):
+    data = message.web_app_data.data
+
+    # уведомление админу
+    await bot.send_message(
+        ADMIN_ID,
+        f"🎯 РЕЗУЛЬТАТ СПИНА\n"
+        f"Пользователь: @{message.from_user.username}\n"
+        f"ID: {message.from_user.id}\n"
+        f"Данные: {data}"
+    )
+
+    await message.answer(
+        "⏳ Результат зафиксирован.\n"
+        "Если это выигрыш — администратор свяжется с тобой."
+    )
 
 if __name__ == "__main__":
-    executor.start_polling(dp)
-    
+    executor.start_polling(dp, skip_updates=True)
