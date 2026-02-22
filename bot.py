@@ -3,7 +3,7 @@ from aiogram.utils import executor
 import os
 
 TOKEN = os.getenv("BOT_TOKEN")  8321012082:AAGjcOJK9Z4AGda-mf_mKjCIpjP5c5f86jw
-ADMIN_ID = 123456789  http://t.me/opportunity777bot
+ADMIN_ID = 123456789  @ahma_gv
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
