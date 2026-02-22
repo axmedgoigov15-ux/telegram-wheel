@@ -3,7 +3,7 @@ from aiogram.utils import executor
 import os
 
 TOKEN = os.getenv("BOT_TOKEN")  8321012082:AAGjcOJK9Z4AGda-mf_mKjCIpjP5c5f86jw
-ADMIN_ID = 123456789  # <-- ВСТАВЬ СВОЙ TELEGRAM ID
+ADMIN_ID = 123456789  @opportunity777bot
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
