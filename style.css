@@ -5,12 +5,15 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
 canvas {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
+
 #text {
-  margin-top: 20px;
-  font-size: 22px;
+  font-size: 20px;
+  margin-top: 10px;
 }
